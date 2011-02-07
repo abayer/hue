@@ -141,7 +141,7 @@ crepo: $(THIRDPARTY_JS_DIR)/manifest.json $(THIRDPARTY_JS_DIR)/*.hash parent-pom
 # Install parent POM
 ###################################
 parent-pom:
-	cd maven && mvn install
+	cd $(ROOT)/maven && mvn install
 
 .PHONY: parent-pom
 
