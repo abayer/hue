@@ -72,7 +72,7 @@ $(PLUGIN): $(shell find $(PLUGIN_JAVA_DIR) )
 	mkdir -p $(PLUGIN_JAVA_LIB)
 	@echo "--- Building Hadoop plugins"
 	cd $(PLUGIN_JAVA_DIR) && mvn clean install
-	cp $(BLD_DIR_PLUGINS)/hue-plugins-$(DESKTOP_VERSION)-SNAPSHOT.jar $(PLUGIN)
+	cp $(BLD_DIR_PLUGINS)/hue-plugins-$(MAVEN_VERSION).jar $(PLUGIN)
 else
 $(PLUGIN):
 	$(error Cannot build hadoop plugin without source)
@@ -88,7 +88,7 @@ $(STATIC_GROUP_MAPPING): $(shell find $(STATIC_GROUP_MAPPING_SRC))
 	mkdir -p $(STATIC_GROUP_MAPPING_LIB)
 	@echo "--- Building static UserGroupMappingService"
 	cd $(STATIC_GROUP_MAPPING_DIR) && mvn clean install
-	cp $(STATIC_GROUP_MAPPING_BUILD)/static-group-mapping-$(DESKTOP_VERSION)-SNAPSHOT.jar $(STATIC_GROUP_MAPPING)
+	cp $(STATIC_GROUP_MAPPING_BUILD)/static-group-mapping-$(MAVEN_VERSION).jar $(STATIC_GROUP_MAPPING)
 else
 $(STATIC_GROUP_MAPPING):
 	$(error Cannot build static-group-mapping jar without source)
@@ -104,7 +104,7 @@ $(SUDO_SHELL): $(shell find $(SUDO_SHELL_SRC))
 	mkdir -p $(SUDO_SHELL_LIB)
 	@echo "--- Building sudo fsshell tool"
 	cd $(SUDO_SHELL_DIR) && mvn clean install
-	cp $(SUDO_SHELL_BUILD)/sudo-shell-$(DESKTOP_VERSION).jar $(SUDO_SHELL)
+	cp $(SUDO_SHELL_BUILD)/sudo-shell-$(MAVEN_VERSION).jar $(SUDO_SHELL)
 else
 $(SUDO_SHELL):
 	$(error cannot build sudo-shell jar without source)

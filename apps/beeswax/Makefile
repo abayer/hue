@@ -54,7 +54,7 @@ $(BEESWAX): $(shell find $(BEESWAX_JAVA_DIR))
 	@echo "--- Building Desktop beeswax"
 	cd $(BEESWAX_JAVA_DIR) && mvn clean install
 	@mkdir -p $(BEESWAX_JAVA_LIB)
-	@cp $(BLD_DIR_BEESWAX)/beeswax-server-1.2-SNAPSHOT.jar $@
+	@cp $(BLD_DIR_BEESWAX)/beeswax-server-$(MAVEN_VERSION).jar $@
 
 else
 $(BEESWAX):
