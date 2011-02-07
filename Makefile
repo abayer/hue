@@ -147,7 +147,7 @@ parent-pom: cd maven && mvn install
 ###################################
 # virtual-env
 ###################################
-virtual-env: $(BLD_DIR_ENV)/stamp
+virtual-env: $(BLD_DIR_ENV)/stamp parent-pom
 $(BLD_DIR_ENV)/stamp:
 	@echo "--- Creating virtual environment at $(BLD_DIR_ENV)"
 	$(SYS_PYTHON) $(VIRTUAL_BOOTSTRAP) \
