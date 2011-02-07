@@ -55,7 +55,6 @@ $(BEESWAX): $(shell find $(BEESWAX_JAVA_DIR))
 	cd $(BEESWAX_JAVA_DIR) && mvn clean install
 	@mkdir -p $(BEESWAX_JAVA_LIB)
 	@cp $(BLD_DIR_BEESWAX)/beeswax-server-1.2-SNAPSHOT.jar $@
-	@cp $(BLD_DIR_BEESWAX)/beeswax-server-1.2-SNAPSHOT-tests.jar $(BEESWAX_JAVA_LIB)
 
 else
 $(BEESWAX):
