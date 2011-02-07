@@ -137,6 +137,12 @@ crepo: $(THIRDPARTY_JS_DIR)/manifest.json $(THIRDPARTY_JS_DIR)/*.hash
 	  ($(CREPO) dump-refs > $(ROOT)/VERSION_DATA || true)
 # END DEV ONLY >>>>
 
+###################################
+# Install parent POM
+###################################
+parent-pom: cd maven && mvn install
+
+.PHONY: parent-pom
 
 ###################################
 # virtual-env
@@ -157,7 +163,7 @@ $(BLD_DIR_ENV)/stamp:
 .PHONY: desktop
 
 # <<<< DEV ONLY
-desktop: crepo
+desktop: crepo parent-pom
 # END DEV ONLY >>>>
 desktop: virtual-env
 	@$(MAKE) -C desktop
