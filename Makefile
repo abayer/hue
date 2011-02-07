@@ -130,7 +130,7 @@ docs:
 # Development use crepo to fetch thirdparty dependencies.
 
 .PHONY: crepo
-crepo: $(THIRDPARTY_JS_DIR)/manifest.json $(THIRDPARTY_JS_DIR)/*.hash
+crepo: $(THIRDPARTY_JS_DIR)/manifest.json $(THIRDPARTY_JS_DIR)/*.hash parent-pom
 	@echo "--- Synchronizing external dependencies with crepo"
 	@mkdir -p $(BLD_DIR)
 	@cd $(THIRDPARTY_JS_DIR) && $(CREPO) sync && \
@@ -140,7 +140,8 @@ crepo: $(THIRDPARTY_JS_DIR)/manifest.json $(THIRDPARTY_JS_DIR)/*.hash
 ###################################
 # Install parent POM
 ###################################
-parent-pom: cd maven && mvn install
+parent-pom:
+	cd maven && mvn install
 
 .PHONY: parent-pom
 
@@ -187,7 +188,7 @@ INSTALL_CORE_FILES = \
 	VERS* LICENSE* README*
 
 .PHONY: install
-install: virtual-env install-check install-core-structure install-desktop install-apps install-env
+install: virtual-env parent-pom install-check install-core-structure install-desktop install-apps install-env
 
 .PHONY: install-check
 install-check:
