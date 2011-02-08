@@ -71,7 +71,7 @@ PLUGIN_OPTS := -Dbuild.dir=$(BLD_DIR_PLUGINS) \
 $(PLUGIN): $(shell find $(PLUGIN_JAVA_DIR) )
 	mkdir -p $(PLUGIN_JAVA_LIB)
 	@echo "--- Building Hadoop plugins"
-	cd $(PLUGIN_JAVA_DIR) && mvn clean install
+	cd $(PLUGIN_JAVA_DIR) && mvn clean install -DskipTests
 	cp $(BLD_DIR_PLUGINS)/hue-plugins-$(MAVEN_VERSION).jar $(PLUGIN)
 else
 $(PLUGIN):
@@ -87,7 +87,7 @@ STATIC_GROUP_MAPPING_OPTS := -Dbuild.dir=$(STATIC_GROUP_MAPPING_BUILD) \
 $(STATIC_GROUP_MAPPING): $(shell find $(STATIC_GROUP_MAPPING_SRC))
 	mkdir -p $(STATIC_GROUP_MAPPING_LIB)
 	@echo "--- Building static UserGroupMappingService"
-	cd $(STATIC_GROUP_MAPPING_DIR) && mvn clean install
+	cd $(STATIC_GROUP_MAPPING_DIR) && mvn clean install -DskipTests
 	cp $(STATIC_GROUP_MAPPING_BUILD)/static-group-mapping-$(MAVEN_VERSION).jar $(STATIC_GROUP_MAPPING)
 else
 $(STATIC_GROUP_MAPPING):
@@ -103,7 +103,7 @@ SUDO_SHELL_OPTS := -Dbuild.dir=$(SUDO_SHELL_BUILD) \
 $(SUDO_SHELL): $(shell find $(SUDO_SHELL_SRC))
 	mkdir -p $(SUDO_SHELL_LIB)
 	@echo "--- Building sudo fsshell tool"
-	cd $(SUDO_SHELL_DIR) && mvn clean install
+	cd $(SUDO_SHELL_DIR) && mvn clean install -DskipTests
 	cp $(SUDO_SHELL_BUILD)/sudo-shell-$(MAVEN_VERSION).jar $(SUDO_SHELL)
 else
 $(SUDO_SHELL):

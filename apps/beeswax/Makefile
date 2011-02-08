@@ -52,7 +52,7 @@ BEESWAX_OPTS := -Dbuild.dir=$(BLD_DIR_BEESWAX) \
 	        -Dhive.lib=$(BEESWAX_HIVE_LIB)
 $(BEESWAX): $(shell find $(BEESWAX_JAVA_DIR))
 	@echo "--- Building Desktop beeswax"
-	cd $(BEESWAX_JAVA_DIR) && mvn clean install
+	cd $(BEESWAX_JAVA_DIR) && mvn clean install -DskipTests
 	@mkdir -p $(BEESWAX_JAVA_LIB)
 	@cp $(BLD_DIR_BEESWAX)/beeswax-server-$(MAVEN_VERSION).jar $@
 
