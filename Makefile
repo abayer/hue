@@ -148,7 +148,7 @@ parent-pom:
 ###################################
 # virtual-env
 ###################################
-virtual-env: $(BLD_DIR_ENV)/stamp parent-pom
+virtual-env: $(BLD_DIR_ENV)/stamp
 $(BLD_DIR_ENV)/stamp:
 	@echo "--- Creating virtual environment at $(BLD_DIR_ENV)"
 	$(SYS_PYTHON) $(VIRTUAL_BOOTSTRAP) \
@@ -164,7 +164,7 @@ $(BLD_DIR_ENV)/stamp:
 .PHONY: desktop
 
 # <<<< DEV ONLY
-desktop: crepo parent-pom
+desktop: crepo
 # END DEV ONLY >>>>
 desktop: virtual-env
 	@$(MAKE) -C desktop
@@ -188,7 +188,7 @@ INSTALL_CORE_FILES = \
 	VERS* LICENSE* README*
 
 .PHONY: install
-install: virtual-env parent-pom install-check install-core-structure install-desktop install-apps install-env
+install: virtual-env install-check install-core-structure install-desktop install-apps install-env
 
 .PHONY: install-check
 install-check:
